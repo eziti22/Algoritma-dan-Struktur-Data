@@ -3,12 +3,12 @@ import java.util.Stack;
 public class main2 {
     private Stack <main> dataPerpus;
     public static void main(String[] args) throws Exception{
-        main2 Screen = new Main2();
+        main2 Screen = new main2();
         Screen.inputData();
         Screen.cetakData();
     }
     public void inputData() {
-        dataPerpus = new Stack<Main>();
+        dataPerpus = new Stack<main>();
         String jawaban;
         int number = 1;
         do {
@@ -24,7 +24,7 @@ public class main2 {
             String kategori = System.console().readLine();
             System.out.print("Tahun : ");
             Integer tahun = Integer.valueOf(System.console().readLine());
-            Main perpus = new Main(judul, pengarang, penerbit, tahun, kategori);
+            main perpus = new main(judul, pengarang, penerbit, tahun, kategori);
             dataPerpus.add(perpus);
             System.out.print("Apakah anda ingin menambahkan buku lagi? (Ya/ Tidak)");
             jawaban = System.console().readLine();

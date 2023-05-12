@@ -2,10 +2,10 @@ public class DataZakatFitri {
   private String nama;
   private String alamat;
   private String metodePembayaran;
-  private boolean sedekah;
+  private String sedekah;
   private int nominalSedekah;
 
-public DataZakatFitri(String nama, String alamat, String metodePembayaran, boolean sedekah, int nominalSedekah) {
+public DataZakatFitri(String nama, String alamat, String metodePembayaran, int jumlahZakat, String sedekah, int nominalSedekah) {
     this.nama = nama;
     this.alamat = alamat;
     this.metodePembayaran = metodePembayaran;
@@ -37,11 +37,11 @@ public void setMetodePembayaran(String metodePembayaran) {
     this.metodePembayaran = metodePembayaran;
 }
 
-public boolean getSedekah() {
+public String getSedekah() {
     return sedekah;
 }
 
-public void setSedekah(boolean sedekah) {
+public void setSedekah(String sedekah) {
     this.sedekah = sedekah;
 }
 
