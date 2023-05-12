@@ -1,5 +1,5 @@
 public class Main {
-    public String judulBuku;
+    public String judul;
     public String pengarang;
     public String penerbit;
     public String kategori;
