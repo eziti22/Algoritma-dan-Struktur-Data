@@ -63,7 +63,7 @@ public class Main1 {
             }
 
             System.out.println("");
-            DataZakatFitri warga = new DataZakatFitri(nama, alamat, metodePembayaran, sedekah, nominalSedekah);
+            DataZakatFitri warga = new DataZakatFitri(nama, alamat, metodePembayaran, nominalSedekah, sedekah, nominalSedekah);
             dataWarga.add(warga);
             System.out.print("Apakah Anda ingin menambahkan data warga lagi? (Y/N)");
             jawaban = System.console().readLine();
@@ -95,5 +95,7 @@ public void cetakData() {
     System.out.println("Banyak beras zakat yang terkumpul: " + jumlahBeras + " Kg");
     System.out.println("Banyak uang zakat yang terkumpul: Rp " + jumlahUang);
     System.out.println("Banyak sedekah yang terkumpul: Rp " + uangSedekah);
+
+    
 }
 }

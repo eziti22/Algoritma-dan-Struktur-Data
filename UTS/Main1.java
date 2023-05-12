@@ -1,7 +1,8 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Main1 {
-    private ArrayList<DataZakatFitri> dataWarga;
+    private LinkedList<DataZakatFitri> dataWarga;
     private int jumlahBeras = 0;
     private int jumlahUang = 0;
     private int uangSedekah = 0;
@@ -13,7 +14,7 @@ public class Main1 {
     }
 
     public void inputData() {
-        dataWarga = new ArrayList<DataZakatFitri>();
+        dataWarga = new LinkedList<DataZakatFitri>();
         String jawaban;
         int number = 1;
         do {
@@ -48,21 +49,21 @@ public class Main1 {
                     break;
             }
 
-            String jawabanSedekah;
+            String sedekah;
             int nominalSedekah = 0;
             do {
                 System.out.print("Apakah Anda ingin bersedekah? (Y/N)");
-                jawabanSedekah = System.console().readLine();
-            } while (!jawabanSedekah.equalsIgnoreCase("Y") && !jawabanSedekah.equalsIgnoreCase("N"));
+                sedekah = System.console().readLine();
+            } while (!sedekah.equalsIgnoreCase("Y") && !sedekah.equalsIgnoreCase("N"));
 
-            if (jawabanSedekah.equalsIgnoreCase("Y")) {
+            if (sedekah.equalsIgnoreCase("Y")) {
                 System.out.print("Masukkan nominal sedekah: ");
                 nominalSedekah = Integer.parseInt(System.console().readLine());
                 uangSedekah += nominalSedekah;
             }
 
             System.out.println("");
-            DataZakatFitri warga = new DataZakatFitri(nama, alamat, metodePembayaran, jumlahZakat, jawabanSedekah, nominalSedekah);
+            DataZakatFitri warga = new DataZakatFitri(nama, alamat, metodePembayaran, nominalSedekah, sedekah, nominalSedekah);
             dataWarga.add(warga);
             System.out.print("Apakah Anda ingin menambahkan data warga lagi? (Y/N)");
             jawaban = System.console().readLine();
@@ -70,60 +71,31 @@ public class Main1 {
         } while (jawaban.equalsIgnoreCase("Y"));
     }
 
-    public void cetakData() {
+public void cetakData() {
     int countBeras = 0;
     int countUang = 0;
-    int totalBeras = 0;
-    int totalUang = 0;
 
     System.out.println("==============================================================");
     System.out.println("\tData Warga Yang Sudah Membayar Zakat");
     System.out.println("==============================================================");
-    System.out.println("No\tNama\t\tAlamat\t\tMetode Pembayaran");
+    System.out.println("No\tNama\t\tAlamat\t\tMetode Pembayaran\tNominal Sedekah");
     System.out.println("==============================================================");
-    for (int i = 0; i < dataWarga.size(); i++) {
-        System.out.println((i+1) + "\t" + dataWarga.get(i).getNama() + "\t\t" + dataWarga.get(i).getAlamat() + "\t\t" + dataWarga.get(i).getMetodePembayaran());
-        if (dataWarga.get(i).getMetodePembayaran().equals("Beras")) {
+    for (ListIterator<DataZakatFitri> it = dataWarga.listIterator(); it.hasNext(); ) {
+        DataZakatFitri warga = it.next();
+        System.out.println((it.nextIndex()) + "\t" + warga.getNama() + "\t\t" + warga.getAlamat() + "\t\t" + warga.getMetodePembayaran() + "\t\t" + warga.getNominalSedekah());
+        if (warga.getMetodePembayaran().equals("Beras")) {
             countBeras++;
-            totalBeras += 2.5;
-        } else if (dataWarga.get(i).getMetodePembayaran().equals("Uang")) {
-            countUang++;
-            totalUang += 35000;
-        }
-    }
-
-    System.out.println("\nBanyak warga yang menghitung zakat fitri dengan beras: " + countBeras);
-    System.out.println("Banyak warga yang menghitung zakat fitri dengan uang: " + countUang);
-    System.out.println("Banyak beras zakat yang terkumpul: " + totalBeras + " Kg");
-    System.out.println("Banyak uang zakat yang terkumpul: Rp " + totalUang);
-
-}
-
-public void cetakData() {
-    int totalBeras = 0; // variabel untuk menghitung total beras yang terkumpul
-    int totalUang = 0; // variabel untuk menghitung total uang yang terkumpul
-    int countBeras = 0; // variabel untuk menghitung jumlah warga yang zakatnya dihitung dengan beras
-    int countUang = 0; // variabel untuk menghitung jumlah warga yang zakatnya dihitung dengan uang
-
-    System.out.println("Data Warga yang Membayar Zakat Fitri");
-    System.out.println("------------------------------------");
-
-    for (DataZakatFitri data : dataWarga) {
-        System.out.println("Warga " + data.nama + " membayar zakat fitri sebesar " + data.zakatFitri + " kg beras atau Rp " + data.zakatUang);
-        if (data.zakatUang == 0) {
-            totalBeras += data.zakatFitri;
-            countBeras++;
-        } else {
-            totalUang += data.zakatUang;
+        } else if (warga.getMetodePembayaran().equals("Uang")) {
             countUang++;
         }
     }
 
-    System.out.println("------------------------------------");
-    System.out.println("Jumlah warga yang menghitung zakat fitri dengan beras: " + countBeras);
-    System.out.println("Jumlah warga yang menghitung zakat fitri dengan uang: " + countUang);
-    System.out.println("Total beras yang terkumpul: " + totalBeras + " kg");
-    System.out.println("Total uang yang terkumpul: Rp " + totalUang);
-    System.out.println("Total uang sedekah yang terkumpul: Rp " + totalSedekah);
+    System.out.println("\nBanyak warga yang berzakat fitri dengan beras: " + countBeras);
+    System.out.println("Banyak warga yang berzakat fitri dengan uang: " + countUang);
+    System.out.println("Banyak beras zakat yang terkumpul: " + jumlahBeras + " Kg");
+    System.out.println("Banyak uang zakat yang terkumpul: Rp " + jumlahUang);
+    System.out.println("Banyak sedekah yang terkumpul: Rp " + uangSedekah);
+
+    
 }
 }

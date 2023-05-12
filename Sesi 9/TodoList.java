@@ -45,5 +45,7 @@ public class TodoList {
             System.out.println("- " + done);
         }
         System.out.println("Terima kasih telah menggunakan Todo List!");
+        System.out.println("============================");
+        
     }
 }
