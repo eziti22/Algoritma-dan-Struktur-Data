@@ -1,4 +1,4 @@
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
         int[] arr = {64, 34, 25, 12, 22, 11, 90};
         bubbleSort(arr);
