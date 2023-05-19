@@ -1,5 +1,3 @@
-package Sort;
-
 class MergeSort {
     void merge(int arr[], int l, int m, int r, String param) {
         int n1 = m - l + 1;
@@ -66,7 +64,6 @@ class MergeSort {
 
     public static void main(String args[]) throws Exception {
         int arr[] = { 12, 11, 13, 5, 6, 7 };
-
         System.out.println("Given Array");
         printArray(arr);
 

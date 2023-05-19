@@ -1,5 +1,3 @@
-package Sort;
-
 public class HeapSort {
     public void sort(int arr[], String param)
     {
@@ -75,16 +73,19 @@ public class HeapSort {
     public static void main(String args[])
     {
         int arr[] = { 12, 11, 13, 5, 6, 7 };
+        System.out.println("Given Array");
+        printArray(arr);
+
         HeapSort ob = new HeapSort();
  
         ob.sort(arr,"asc");
  
-        System.out.println("Sorted array is (Ascending)");
+        System.out.println("\nSorted array is (Ascending)");
         printArray(arr);
 
         ob.sort(arr,"desc");
  
-        System.out.println("Sorted array is (Descending)");
+        System.out.println("\nSorted array is (Descending)");
         printArray(arr);
     }
 }
